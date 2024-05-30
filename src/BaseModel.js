@@ -2,7 +2,7 @@ import {React } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function BaseModel(props) {
-  const { nodes, materials } = useGLTF('/sgbase.glb')
+  const { nodes, materials } = useGLTF('./sgbase.glb')
 
 
   const baseParams = {
