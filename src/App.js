@@ -39,7 +39,7 @@ function App() {
     roughness: 0,
     ior: 1.8,
     thickness: 0.7,
-    specularIntensity: 1,
+    specularIntensity: .5,
     specularColor: 0xffffff,
     envMapIntensity: 1,
     lightIntensity: 1,
