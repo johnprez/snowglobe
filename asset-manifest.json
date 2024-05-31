@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/snowglobe/static/css/main.e30fb4df.css",
-    "main.js": "/snowglobe/static/js/main.ea1c9933.js",
+    "main.js": "/snowglobe/static/js/main.978edadc.js",
     "static/js/453.d609967a.chunk.js": "/snowglobe/static/js/453.d609967a.chunk.js",
     "index.html": "/snowglobe/index.html",
     "main.e30fb4df.css.map": "/snowglobe/static/css/main.e30fb4df.css.map",
-    "main.ea1c9933.js.map": "/snowglobe/static/js/main.ea1c9933.js.map",
+    "main.978edadc.js.map": "/snowglobe/static/js/main.978edadc.js.map",
     "453.d609967a.chunk.js.map": "/snowglobe/static/js/453.d609967a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e30fb4df.css",
-    "static/js/main.ea1c9933.js"
+    "static/js/main.978edadc.js"
   ]
 }
