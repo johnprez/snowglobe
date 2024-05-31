@@ -24,13 +24,25 @@ export function BaseModel(props) {
       <mesh
         castShadow
         receiveShadow
-        position={[0,-6.5,0]}
         geometry={nodes.Cylinder.geometry}
         scale="3"
+        position={[0,-7,0]}
       >
-     <meshPhysicalMaterial args={[baseParams]}/>
-     </mesh>
+      <meshPhysicalMaterial args={[baseParams]}/>
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.snowbase.geometry}
+        scale="3"
+        position={[0,-4,0]}
+        
+      >
+         <meshStandardMaterial color="#ffffff"/>
+      </mesh>
+      
     </group>
+    
   )
 }
 
