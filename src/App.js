@@ -5,9 +5,9 @@ import { createRoot } from 'react-dom/client'
 import { Canvas, useFrame, useLoader, extend} from "@react-three/fiber";
 import { Float, Lightformer, Text, Html, ContactShadows, Environment} from "@react-three/drei"
 import { EffectComposer, N8AO, TiltShift2, Bloom, Vignette} from "@react-three/postprocessing"
-import { easing } from "maath"
+import { easing, random } from "maath"
 import {TextureLoader} from 'three'
-import { Suspense, useMemo, useRef } from 'react'
+import { Suspense, useMemo, useRef,useEffect } from 'react'
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 import { useControls } from 'leva'
 
@@ -65,7 +65,7 @@ function App() {
       '#feff89',
     ],
   };
-
+ 
   const Globe = (props) => (
     <mesh receiveShadow castShadow {...props}>
       <sphereGeometry args={[5.2, 20, 20]} />
@@ -115,6 +115,33 @@ function App() {
     return null;
   }
 
+  function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function Instances({ count = 200, temp = new THREE.Object3D() }) {
+    const instancedMeshRef = useRef()
+    const movement = 4.5;
+    const xpos = -.8;
+    useEffect(() => {
+      // Set positions
+      for (let i = 0; i < count; i++) {
+        temp.position.set(xpos - Math.random() * movement, Math.random() * movement, Math.random())
+        
+        temp.updateMatrix()
+        instancedMeshRef.current.setMatrixAt(i, temp.matrix)
+      }
+      // Update the instance
+      instancedMeshRef.current.instanceMatrix.needsUpdate = true
+    }, [count,temp])
+    return (
+      <instancedMesh ref={instancedMeshRef} args={[null, null, count]}>
+        <sphereGeometry args={[.01]}/>
+        <meshStandardMaterial />
+      </instancedMesh>
+    )
+  }
+
 
   return (
     <div id="canvas-container">
@@ -137,9 +164,9 @@ function App() {
             <BaseModel />
           </Suspense>
           <SnowEffect count="100" />
-       
-         
-        
+        <group position={[2,-3,0]}>
+          <Instances />
+          </group>
         </Float>
         <ContactShadows scale={100} position={[0, -7.5, 0]} blur={1} far={100} opacity={0.85} />
         <Environment preset="city">
